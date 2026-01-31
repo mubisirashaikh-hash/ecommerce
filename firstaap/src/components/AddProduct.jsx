@@ -14,16 +14,29 @@ export default function AddProduct() {
         const newProduct={
             name,price,description,category,stock:Number(stock),role
         }
-        axios.post("http://localhost:4000/api/product/add",newProduct)
+        axios.post(" https://ecommerce-oiyj.onrender.com/api/product/add",newProduct)
           .then((res)=>{
             console.log(res)
             if(res.status==200){
-              alert("Product added successfull")
+             // alert("Product added successfull")
+             Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "Your work has been saved",
+  showConfirmButton: false,
+  timer: 1500
+});
               navigate("/")
             }
           })
           .catch((err)=>{
-            alert(err.response.data.message)
+           // alert(err.response.data.message)
+           Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: "Something went wrong!",
+  footer: '<a href="#">Why do I have this issue?</a>'
+});
           })
     }
 

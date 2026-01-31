@@ -18,16 +18,29 @@ export default function Register() {
     console.log(import.meta.env)
 console.log(import.meta.env.VITE_API_BACKEND)
 
-    axios.post("http://localhost:4000/api/create-user",newUser)
+    axios.post(" https://ecommerce-oiyj.onrender.com/api/create-user",newUser)
       .then((res)=>{
         console.log(res.data)
         if(res.data.status===201){
-          alert("register successful")
+         // alert("register successful")
+         Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "Your work has been saved",
+  showConfirmButton: false,
+  timer: 1500
+});
           navigate("/login")
         }
       })
       .catch((err)=>{
-        alert("got the error while registering open console and check the response data")
+      //  alert("got the error while registering open console and check the response data")
+      Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: "Something went wrong!",
+  footer: '<a href="#">Why do I have this issue?</a>'
+});
       })
 
     setName("")

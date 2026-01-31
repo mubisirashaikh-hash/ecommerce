@@ -14,7 +14,7 @@ export default function Login() {
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/login",
+        " https://ecommerce-oiyj.onrender.com/api/login",
         newUser
       )
 
@@ -24,7 +24,13 @@ export default function Login() {
         navigate("/")
       }
     } catch (err) {
-      alert(err.response?.data?.message || "Login failed")
+     // alert(err.response?.data?.message || "Login failed")
+     Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: "Something went wrong!",
+  footer: '<a href="#">Why do I have this issue?</a>'
+});
     }
   }
 
